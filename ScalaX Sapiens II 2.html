@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScalaX AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+body{ 
+  background:black; 
+  color:white; 
+  overflow-x: hidden; 
+}
+
+.hero{ 
+  position:relative; 
+  min-height:100vh; 
+  background: black; 
+  display:flex; 
+  flex-direction:column; 
+  justify-content: flex-start; 
+  padding-top:120px; 
+}
+
+.header{ 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  z-index: 10; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 10px 15px; 
+}
+
+.logo{ 
+  height: 90px; 
+  width: auto; 
+  object-fit: contain; 
+  margin-left: -15px; 
+  margin-top: -10px; 
+  filter: brightness(1.1); 
+  z-index: 11;
+}
+
+.menu{ 
+  width:25px; 
+  height:2px; 
+  background:white; 
+  position:relative; 
+  cursor: pointer; 
+  margin-right: 10px; 
+  z-index: 11;
+}
+
+.menu::before, .menu::after{ 
+  content:""; 
+  position:absolute; 
+  width:25px; 
+  height:2px; 
+  background:white; 
+  left:0; 
+}
+.menu::before{ top:-8px; }
+.menu::after{ top:8px; }
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background: #111;
+  transition: 0.3s;
+  z-index: 12;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.active {
+  right: 0;
+}
+
+.sidebar .close {
+  align-self: flex-end;
+  font-size: 28px;
+  cursor: pointer;
+  margin-bottom: 40px;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  margin-bottom: 20px;
+  transition: 0.2s;
+}
+
+.sidebar a:hover {
+  color: #ccc;
+}
+
+.content{ 
+  position:relative; 
+  z-index:2; 
+  padding: 60px 30px; 
+  max-width:700px; 
+}
+
+.content h1{ 
+  font-size: 42px; 
+  font-weight:600; 
+  margin-bottom:15px; 
+  text-transform: uppercase; 
+  line-height: 1.1; 
+}
+
+.content p{ 
+  font-size:16px; 
+  color:#ccc; 
+  line-height:1.6; 
+  margin-bottom:30px; 
+}
+
+.btn{ 
+  display:inline-block; 
+  padding:14px 40px; 
+  border:1px solid white; 
+  text-decoration:none; 
+  color:white; 
+  transition:0.3s; 
+}
+
+.btn:hover{ 
+  background:white; 
+  color:black; 
+}
+
+@media(max-width:600px){
+  .logo { height: 80px; margin-left: -10px; }
+  .content h1 { font-size: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Post SAPIENS II -->
+<section class="hero">
+  <header class="header">
+    <img src="https://i.ibb.co/KcdRL5VJ/file-000000009850720e890f1cce9b68e3f6.png" class="logo" alt="ScalaX Logo">
+    <div class="menu" id="menu"></div>
+  </header>
+
+  <div class="content">
+    <img src="https://i.ibb.co/7d6vYgVM/7d3a4e21-a9d7-413e-8cae-74c7526406ec-1-1.png" style="width:100%; max-width:400px; margin-bottom:20px;" alt="Robot Image">
+    <h1>SAPIENS II</h1>
+    <p>
+      Dados que treinam robôs para perceber, aprender e agir no mundo real.
+    </p>
+    <a href="#" class="btn">EXPLORAR →</a>
+  </div>
+</section>
+
+<!-- Post AGI -->
+<section class="hero">
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="close" id="closeBtn">&times;</div>
+    <a href="#sobre">Sobre</a>
+    <a href="#contato">Contato</a>
+  </div>
+
+  <div class="content">
+    <img src="https://i.ibb.co/QjCKwqJG/file-0000000070e471f58b2ad28baf157db3.png" style="width:100%; max-width:400px; margin-bottom:20px;" alt="Robot Image">
+    <h1>AGI</h1>
+    <p>
+      Dados de alta qualidade para treinar a próxima geração de inteligência artificial.
+    </p>
+    <a href="#" class="btn">EXPLORAR →</a>
+  </div>
+</section>
+
+<script>
+const menu = document.getElementById('menu');
+const sidebar = document.getElementById('sidebar');
+const closeBtn = document.getElementById('closeBtn');
+
+menu.addEventListener('click', () => {
+  sidebar.classList.add('active');
+});
+
+closeBtn.addEventListener('click', () => {
+  sidebar.classList.remove('active');
+});
+
+sidebar.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    sidebar.classList.remove('active');
+  });
+});
+</script>
+
+</body>
+</html>
